@@ -1,0 +1,32 @@
+GET  http://localhost:5000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5hbWUiOiJZdXN1ZiBGIiwiZW1haWwiOiJ1c3VwQGdtYWlsLmNvbSIsImlhdCI6MTY4ODIzMDExOSwiZXhwIjoxNjg4MjMwMTM0fQ.xKchXCiq_Cm9m7zmcsBJT6opRkhx86qTQmFw5iuZ63A
+
+###
+
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "name": "Yussw",
+    "email": "usup2gmail.com",
+    "password": "1234562",
+    "confPassword": "123456"
+}
+
+###
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email" : "Jonsnow@gmail.com",
+    "password" : "123"
+}
+
+###
+
+GET http://localhost:5000/token
+
+
+###
+
+DELETE http://localhost:5000/logout
