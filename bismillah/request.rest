@@ -30,3 +30,66 @@ GET http://localhost:5000/token
 ###
 
 DELETE http://localhost:5000/logout
+
+###
+POST http://localhost:5000/jobs
+Content-Type: application/json
+
+{
+    "name": "Yusuf",
+    "email": "usup2gmail.com",
+    "phone": "099991",
+    "position": "Programmer",
+    "experience": "12",
+    "cv_path": "Ya"
+}
+
+###
+GET http://localhost:5000/jobs
+
+###
+GET http://localhost:5000/jobs/2
+
+###
+DELETE http://localhost:5000/jobs/1
+
+###
+PUT http://localhost:5000/jobs/2
+Content-Type: application/json
+
+{
+    "name": "Yusuf",
+    "email": "ayoy@gmail.com",
+    "phone": "099991",
+    "position": "Programmer",
+    "experience": "12",
+    "cv_path": "Ya"
+}
+
+###
+POST  http://localhost:5000/reports
+Content-Type: application/json
+
+{
+    "name": "Yusuf",
+    "reportIssue": "bangke Lo"
+}
+
+
+###
+GET http://localhost:5000/reports
+
+###
+GET http://localhost:5000/reports/1
+
+###
+PUT http://localhost:5000/reports/1
+Content-Type: application/json
+
+{
+    "name": "Yusuf",
+    "reportIssue": "Astaghfirullah"
+}
+
+###
+DELETE http://localhost:5000/reports/1

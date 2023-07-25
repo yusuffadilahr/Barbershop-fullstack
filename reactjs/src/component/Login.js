@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
-import merbabu from '../assets/merbabu.jpg'
+import gundark from '../assets/gundark.jpg'
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -16,6 +16,8 @@ const Login = () => {
                 email: email,
                 password: password
             });
+            setMsg('Login Sukses!');
+            window.alert('Login Sukses!');
             history.push('/dashboard');
         } catch (error) {
             if (error.response) {
@@ -25,7 +27,7 @@ const Login = () => {
     }
 
     const backgroundStyle = {
-        backgroundImage: `url(${merbabu})`,
+        backgroundImage: `url(${gundark})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'
     };

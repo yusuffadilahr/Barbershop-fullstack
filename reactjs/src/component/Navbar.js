@@ -1,44 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-
+import { useHistory } from 'react-router-dom';
+import { slide as Menu } from 'react-burger-menu';
+import dunia from '../assets/dunia.png'
 
 const Navbar = () => {
     const history = useHistory();
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
     const Logout = async () => {
         try {
-            await axios.delete('http://localhost:5000/logout')
-            history.push("/");
+            await axios.delete('http://localhost:5000/logout');
+            history.push('/');
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-
-    }
-
+    };
 
     return (
         <nav className="navbar is-large is-light" role="navigation" aria-label="main navigation">
-            <div className='container'>
+            <style>
+                {`
+          .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+          }
+        `}
+            </style>
+            <div className="container">
                 <div className="navbar-brand">
                     <a className="navbar-item" href="/dashboard">
-                        <img src="https://www.pngplay.com/wp-content/uploads/9/Website-Logo-Background-PNG-Image.png" alt="Garuda Logo" />
+                        <img src={dunia} alt="Logo" />
                     </a>
-
-                    <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </a>
+                    <div className="navbar-burger" onClick={toggleMenu} style={{ marginLeft: 'auto', zIndex: 10 }}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
 
                 <div id="navbarBasicExample" className="navbar-menu">
                     <div className="navbar-start">
-                        <a className="navbar-item">
+                        <a className="navbar-item" href='/dashboard'>
                             Home
                         </a>
 
-                        <a className="navbar-item">
-                            Documentation
+                        <a className="navbar-item" href='/services'>
+                            Services
                         </a>
 
                         <div className="navbar-item has-dropdown is-hoverable">
@@ -46,18 +61,14 @@ const Navbar = () => {
                                 More
                             </a>
 
-                            <div className="navbar-dropdown">
-                                <a className="navbar-item">
+                            <div className="navbar-dropdown is-right" style={{ zIndex: 9 }}>
+                                <a className="navbar-item" href='/about'>
                                     About
                                 </a>
-                                <a className="navbar-item">
+                                <a className="navbar-item" href='/jobs'>
                                     Jobs
                                 </a>
-                                <a className="navbar-item">
-                                    Contact
-                                </a>
-                                <hr className="navbar-divider" />
-                                <a className="navbar-item">
+                                <a className="navbar-item" href='/report'>
                                     Report an issue
                                 </a>
                             </div>
@@ -75,8 +86,44 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
+
+            <Menu
+                right
+                isOpen={isOpen}
+                onStateChange={({ isOpen }) => setIsOpen(isOpen)}
+                customBurgerIcon={false}
+                styles={{
+                    bmBurgerBars: { zIndex: 10 },
+                    bmMenuWrap: { zIndex: 9, right: 0, left: 'unset', width: '150px', top: '185px' },
+                }}>
+                <a className="navbar-item" href='/dashboard' style={{ backgroundColor: '#fff' }}>
+                    Home
+                </a>
+
+                <a className="navbar-item" href='/services' style={{ backgroundColor: '#fff' }}>
+                    Services
+                </a>
+
+                <div className="navbar-item has-dropdown is-hoverable" style={{ backgroundColor: '#fff' }}>
+                    <a className="navbar-link" style={{ backgroundColor: '#fff' }}>
+                        More
+                    </a>
+
+                    <div className="navbar-dropdown is-right" style={{ backgroundColor: '#fff' }}>
+                        <a className="navbar-item" href='/about' style={{ backgroundColor: '#fff' }}>
+                            About
+                        </a>
+                        <a className="navbar-item" href='/jobs' style={{ backgroundColor: '#fff' }}>
+                            Jobs
+                        </a>
+                        <a className="navbar-item" style={{ backgroundColor: '#fff' }} onClick={Logout}>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </Menu>
         </nav>
     );
 }
 
-export default Navbar
+export default Navbar;

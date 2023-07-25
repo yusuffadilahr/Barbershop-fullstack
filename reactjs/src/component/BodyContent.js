@@ -17,7 +17,7 @@ const BodyContent = () => {
                     Hadirnya pangkas rambut di Indonesia merupakan bukti adopsi tren kecantikan dan perawatan diri yang terus berkembang di masyarakat. Meskipun demikian, perlu diingat bahwa informasi yang saya sampaikan berdasarkan pengetahuan saya hingga September 2021, dan kondisi industri dapat berubah seiring waktu.
                 </p>
                 <figure>
-                    <img src={pangkas} alt="Image" />
+                    <img src={pangkas} />
                     <figcaption>
                         Gambar 1: Katalog Pangkas Rambut
                     </figcaption>

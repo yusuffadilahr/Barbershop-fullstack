@@ -20,6 +20,8 @@ const Register = () => {
                 password: password,
                 confPassword: confPassword
             });
+            setMsg('Registrasi Sukses!');
+            window.alert('Registrasi Sukses!');
             history.push('/');
         } catch (error) {
             if (error.response) {
@@ -45,7 +47,7 @@ const Register = () => {
                     <div className="columns is-centered">
                         <div className="column is-4-desktop">
                             <form onSubmit={Register} className="box" style={transparentBoxStyle}>
-                                <p className='has-text-centered is-red'>{msg}</p>
+                            {msg && <p className="has-text-centered has-text-red">{msg}</p>}
                                 <div className="field mt-5">
                                     <label className="label">Name</label>
                                     <div className="controls">

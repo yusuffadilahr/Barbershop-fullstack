@@ -3,11 +3,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 const Footer = () => {
     return (
-        <footer class="bg-dark text-light text-center py-4">
+        <footer class="bg-dark text-light text-center py-4 is-mobile">
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <p>PT Shelby Company &copy;2023. All Right Reserved.</p>
+                        <p className='small'>Toto Haircuts &copy;2023. Powered by Yusuf Fadilah Rukmana.</p>
                     </div>
                 </div>
             </div>
